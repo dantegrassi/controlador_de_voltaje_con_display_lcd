@@ -13,3 +13,5 @@ Cosas Usadas:
 -X Cables Jumpers Macho-Hembra
 -Display LCD 16x2
 -3 Resistencias 220
+
+<img width="1272" height="793" alt="Screenshot From 2026-05-29 12-59-46" src="https://github.com/user-attachments/assets/4ac6b7d4-0cf1-4694-80bb-b71cd92f046f" />
