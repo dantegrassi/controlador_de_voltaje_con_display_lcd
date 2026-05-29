@@ -9,7 +9,6 @@ const int ledPinGreen  = 9;
 const int ledPinYellow = 10;
 const int ledPinRed    = 11;
 
-// Para detectar cambio de estado y no redibujar innecesariamente
 int lastRisk = -1;
 
 void setup() {
@@ -27,7 +26,7 @@ void setup() {
   delay(2000);
   lcd.clear();
 
-  // Dibuja la etiqueta fija una sola vez
+
   lcd.setCursor(0, 0);
   lcd.print("Voltaje:        ");
 }
@@ -36,13 +35,10 @@ void loop() {
   readVal = analogRead(analogPin);
   v2 = (5.0 * readVal) / 1023.0;
 
-  // Actualiza solo el valor numérico (fila 0, col 9)
-  // "Voltaje: X.XXV  " — con espacios al final para borrar dígitos viejos
   lcd.setCursor(9, 0);
-  lcd.print(v2, 2);   // 2 decimales → "X.XX"
-  lcd.print("V  ");   // espacios para limpiar si era más largo antes
+  lcd.print(v2, 2);   
+  lcd.print("V  ");   
 
-  // Determina nivel de riesgo
   int risk;
   if (v2 <= 3.00) {
     risk = 0;
@@ -61,7 +57,6 @@ void loop() {
     digitalWrite(ledPinRed,    HIGH);
   }
 
-  // Solo redibuja la fila 1 si cambió el nivel
   if (risk != lastRisk) {
     lcd.setCursor(0, 1);
     if      (risk == 0) lcd.print("Riesgo: Bajo    ");
